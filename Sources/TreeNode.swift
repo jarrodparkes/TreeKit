@@ -17,6 +17,12 @@ public class TreeNode<T> {
     public var children = [TreeNode<T>]()
     public var maxChildren: Int? = nil
 
+    // MARK: Computed Properties
+
+    public var hasMaxChildren: Bool {
+        return maxChildren == nil ? false : children.count >= maxChildren!
+    }
+
     // MARK: Initializers
 
     public init(value: T) {

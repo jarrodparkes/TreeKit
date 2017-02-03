@@ -1,4 +1,4 @@
-// MARK: - SuitTests (All Tests)
+// MARK: - TreeNodeTests (All Tests)
 
 extension TreeNodeTests {
 

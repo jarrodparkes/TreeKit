@@ -37,6 +37,19 @@ class TreeNodeTests: XCTestCase {
         XCTAssertEqual(root1.children.count, 1)
     }
 
+    func testTreeNodeHasMaxChildren() {
+        let root0 = TreeNode<Int>(value: 0)
+        let root1 = TreeNode<Int>(value: 0, maxChildren: 2)
+        let child1 = TreeNode<Int>(value: 1)
+        let child2 = TreeNode<Int>(value: 2)
+
+        XCTAssert(!root0.hasMaxChildren)
+        root1.addChild(child1)
+        XCTAssert(!root1.hasMaxChildren)
+        root1.addChild(child2)
+        XCTAssert(root1.hasMaxChildren)
+    }
+
     func testTreeNodeCheckParent() {
         let root = TreeNode<Int>(value: 0)
         let gen1 = TreeNode<Int>(value: 1)
