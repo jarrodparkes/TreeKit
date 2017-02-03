@@ -15,16 +15,32 @@ public class TreeNode<T> {
     public var value: T
     public weak var parent: TreeNode?
     public var children = [TreeNode<T>]()
+    public var maxChildren: Int? = nil
 
-    // MARK: Initializer
+    // MARK: Initializers
 
     public init(value: T) {
         self.value = value
     }
 
+    public init(value: T, maxChildren: Int) {
+        self.value = value
+        self.maxChildren = maxChildren
+    }
+
     // MARK: Add Child
 
     public func addChild(_ node: TreeNode<T>) {
+        if let maxChildren = maxChildren {
+            if children.count < maxChildren {
+                _addChild(node)
+            }
+        } else {
+            _addChild(node)
+        }
+    }
+
+    private func _addChild(_ node: TreeNode<T>) {
         children.append(node)
         node.parent = self
     }

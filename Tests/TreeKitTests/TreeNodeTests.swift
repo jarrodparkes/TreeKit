@@ -23,6 +23,20 @@ class TreeNodeTests: XCTestCase {
         XCTAssertEqualWithAccuracy(doubleNode.value, 32.0, accuracy: 0.01)
     }
 
+    func testTreeNodeMaxChildren() {
+        let root0 = TreeNode<Int>(value: 0, maxChildren: 0)
+        let root1 = TreeNode<Int>(value: 0, maxChildren: 1)
+        let child1 = TreeNode<Int>(value: 1)
+        let child2 = TreeNode<Int>(value: 2)
+
+        root0.addChild(child1)
+        root1.addChild(child1)
+        root1.addChild(child2)
+
+        XCTAssertEqual(root0.children.count, 0)
+        XCTAssertEqual(root1.children.count, 1)
+    }
+
     func testTreeNodeCheckParent() {
         let root = TreeNode<Int>(value: 0)
         let gen1 = TreeNode<Int>(value: 1)
